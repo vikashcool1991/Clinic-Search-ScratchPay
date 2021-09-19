@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+  - "14"
+cache: npm
+branches:
+  only:
+    - main
+env:
+  - PORT=3000
+  - NODE_ENV=production
+script:
+  - npm run lint
+  - npm run test
+install:
+  - npm install
+after_success: npm run coverage

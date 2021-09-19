@@ -1,0 +1,17 @@
+const { Router } = require('express');
+const ClinicController = require('../controllers/clinic.controller');
+
+class ClinicRoute {
+  constructor() {
+    this.path = '/clinic';
+    this.router = Router();
+    this.clinicController = new ClinicController();
+    this.initializeRoutes();
+  }
+
+  initializeRoutes() {
+    this.router.get(`${this.path}/search`, this.clinicController.search);
+  }
+}
+
+module.exports = ClinicRoute;
