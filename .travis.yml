@@ -13,8 +13,5 @@ env:
     - NODE_ENV=production
 script:
   - npm run lint
-  # - npm run test
 install:
   - npm install
-  - npm install -g eslint
-# after_success: npm run coverage
