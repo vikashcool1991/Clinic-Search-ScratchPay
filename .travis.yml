@@ -5,6 +5,7 @@ cache: npm
 branches:
   only:
     - main
+    - feature/search-api
 env:
   - PORT=3000
   - NODE_ENV=production
