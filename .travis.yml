@@ -16,4 +16,5 @@ script:
   # - npm run test
 install:
   - npm install
+  - npm install -g eslint
 # after_success: npm run coverage
