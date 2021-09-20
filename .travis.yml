@@ -6,7 +6,6 @@ cache:
 branches:
   only:
     - main
-    - feature/search-api
 env:
   global:
     - PORT=3000
