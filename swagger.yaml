@@ -1,126 +1,101 @@
-tags:
-- name: clinic-search
-  description: clinic search API
-
 paths:
-# [GET] users
-  /users:
+# [GET] clinic search
+  /api/v1/clinic/search:
     get:
       tags:
-      - users
-      summary: Find All Users
-      responses:
-        200:
-          description: 'OK'
-        500:
-          description: 'Server Error'
-
-# [POST] users
-    post:
-      tags:
-      - users
-      summary: Add User
+      - clinic
+      summary: Find clinic search results
       parameters:
-      - name: body
-        in: body
-        description: user Data
-        required: true
-        schema:
-          $ref: '#/definitions/users'
-      responses:
-        201:
-          description: 'Created'
-        400:
-          description: 'Bad Request'
-        409:
-          description: 'Conflict'
-        500:
-          description: 'Server Error'
-
-# [GET] users/id
-  /users/{id}:
-    get:
-      tags:
-      - users
-      summary: Find User By Id
-      parameters:
-      - name: id
-        in: path
-        description: User Id
-        required: true
-        type: integer
-      responses:
-        200:
-          description: 'OK'
-        409:
-          description: 'Conflict'
-        500:
-          description: 'Server Error'
-
-# [PUT] users/id
-    put:
-      tags:
-      - users
-      summary: Update User By Id
-      parameters:
-      - name: id
-        in: path
-        description: user Id
-        required: true
-        type: integer
-      - name: body
-        in: body
-        description: user Data
-        required: true
-        schema:
-          $ref: '#/definitions/users'
-      responses:
-        200:
-          description: 'OK'
-        400:
-          description: 'Bad Request'
-        409:
-          description: 'Conflict'
-        500:
-          description: 'Server Error'
-
-# [DELETE] users/id
-    delete:
-      tags:
-      - users
-      summary: Delete User By Id
-      parameters:
-      - name: id
-        in: path
-        description: user Id
-        required: true
-        type: integer
-      responses:
-        200:
-          description: 'OK'
-        409:
-          description: 'Conflict'
-        500:
-          description: 'Server Error'
-
-# definitions
-definitions:
-  users:
-    type: object
-    required:
-        - email
-        - password
-    properties:
-      id:
-        type: integer
-        description: user Id
-      email:
+      - name: clinicName
+        in: query
+        description: Name of clinic
         type: string
-        description: user Email
-      password:
+        required: false
+      - name: state
+        in: query
+        description: Name of state
         type: string
-        description: user Password
+        required: false
+      - name: from
+        in: query
+        description: Available from time
+        type: string
+        required: false
+      - name: to
+        in: query
+        description: Available to time
+        type: string
+        required: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                anyOf:
+                  - $ref: '#/components/schemas/DentalClinicSearchResponse'
+                  - $ref: '#/components/schemas/VetsClinicSearchResponse'
+        '500':
+          description: 'Server Error'
 
-schemes:
- - https
- - http
+# components
+components:
+  schemas:
+    DentalClinicSearchResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        statusCode:
+          type: string
+        error:
+          type: string
+        payload:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: clinic name
+              stateName:
+                type: string
+                description: name of state
+              availability:
+                type: object
+                properties:
+                  from:
+                    type: string
+                    description: Available from time
+                  to:
+                    type: string
+                    description: Available to time
+    VetsClinicSearchResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        statusCode:
+          type: string
+        error:
+          type: string
+        payload:
+          type: array
+          items:
+            type: object
+            properties:
+              clinicName:
+                type: string
+                description: clinic name
+              stateCode:
+                type: string
+                description: code of state
+              opening:
+                type: object
+                properties:
+                  from:
+                    type: string
+                    description: open from time
+                  to:
+                    type: string
+                    description: open to time
