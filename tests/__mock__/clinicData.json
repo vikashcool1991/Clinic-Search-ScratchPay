@@ -1,0 +1,60 @@
+{
+  "data": [
+    {
+      "name": "Good Health Home",
+      "clinicName": "Good Health Home",
+      "stateName": "Alaska",
+      "stateCode": "Al",
+      "availability": {
+        "from": "10:00",
+        "to": "19:30"
+      },
+      "opening": {
+        "from": "10:00",
+        "to": "19:30"
+      }
+    },
+    {
+      "name": "Mayo Clinic",
+      "clinicName": "Mayo Clinic",
+      "stateName": "Florida",
+      "stateCode": "Fl",
+      "availability": {
+        "from": "09:00",
+        "to": "20:00"
+      },
+      "opening": {
+        "from": "09:00",
+        "to": "20:00"
+      }
+    },
+    {
+      "clinicName": "City Vet Clinic",
+      "name": "City Vet Clinic",
+      "stateCode": "NV",
+      "stateName": "NV",
+      "opening": {
+        "from": "10:00",
+        "to": "22:00"
+      },
+      "availability": {
+        "from": "10:00",
+        "to": "22:00"
+      }
+    },
+    {
+      "clinicName": "Scratchpay Test Pet Medical Center",
+      "name": "Scratchpay Test Pet Medical Center",
+      "stateCode": "CA",
+      "stateName": "CA",
+      "opening": {
+        "from": "00:00",
+        "to": "24:00"
+      },
+      "availability": {
+        "from": "00:00",
+        "to": "24:00"
+      }
+    }
+  ]
+}
