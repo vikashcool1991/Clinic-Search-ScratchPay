@@ -7,6 +7,12 @@ const { fetchDentalClinicApi, fetchVetsClinicApi } = require('../services/clinic
 // Assumption 1: multiple search conditions are considered as OR.
 // Assumption 2: response can contain duplicate results.
 class ClinicController {
+  /**
+   * Search Clinic API controller
+   * @param  {object} req
+   * @param  {object} res
+   * @returns {object}
+   */
   async search(req, res) {
     try {
       // converts values of query params to lowercase to make search case insensitive.

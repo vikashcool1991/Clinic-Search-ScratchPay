@@ -1,7 +1,10 @@
 const Joi = require('joi');
 const pick = require('../utils/pick');
 const ApiError = require('../utils/apiError');
-
+/**
+ * @param  {} schema
+ * @returns {function} returns callback function
+ */
 const validate = schema => (req, res, next) => {
   const validSchema = pick(schema, ['params', 'query', 'body']);
   const object = pick(req, Object.keys(validSchema));
