@@ -6,7 +6,7 @@ const errorMiddleware = (error, req, res, next) => {
     const message = error.message || 'Something went wrong';
 
     logger.error(`[${req.method}] ${req.path} >> StatusCode:: ${status}, Message:: ${message}`);
-    res.status(status).json({
+    res.status(status).send({
       message,
     });
   } catch (err) {
